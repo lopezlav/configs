@@ -39,7 +39,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Run picom compositor at startup to avoid ugly context menues
-exec --no-startup-id picom -b
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
