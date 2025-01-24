@@ -59,6 +59,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -67,7 +68,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec warp-terminal
+bindsym $mod+Return exec ghostty
 
 # start explorer
 bindsym $mod+Shift+Return exec nautilus
@@ -133,6 +134,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# execute script to move workspaces to notebook monitor
+bindsym $mod+Shift+m exec ~/.config/i3/move
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date).png"
@@ -145,8 +148,9 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Automatically start applications when i3 starts
-exec --no-startup-id warp-terminal
+exec --no-startup-id ghostty
 exec --no-startup-id cursor
+exec --no-startup-id workrave
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -223,6 +227,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        tray_output primary
 }
 
 
